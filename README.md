@@ -4,7 +4,7 @@
 - 7-marsrover [>                   ] 0% (0/0) - Coverage: 0%
 - 4-fizzbuzz [>                   ] 0% (0/0) - Coverage: 75%
 - 2-addition [>                   ] 0% (0/1) - Coverage: 71%
-- 1-hello [>                   ] 0% (0/1) - Coverage: 100%
+- 1-hello [====================>] 100% (1/1) - Coverage: 100%
 - 3-reverse [>                   ] 0% (0/1) - Coverage: 71%
 - 6-bowling [>                   ] 0% (0/0) - Coverage: 0%
 - 5-romanconverter [>                   ] 0% (0/0) - Coverage: 0%
