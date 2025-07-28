@@ -1,1 +1,1 @@
-from .fizzbuzz import fizzbuzz
+from .fizzbuzz import *

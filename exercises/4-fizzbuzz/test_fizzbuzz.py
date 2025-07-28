@@ -1,37 +1,19 @@
-# test_fizzbuzz.py
+from src import *
 
-from src.fizzbuzz import fizzbuzz
-
-
-def test_fizzbuzz_should_return_1():
+def test_1_should_return_1():
     assert fizzbuzz(1) == "1"
 
-
-def test_fizzbuzz_should_return_2():
+def test_2_should_return_2():
     assert fizzbuzz(2) == "2"
 
-
-def test_fizzbuzz_should_return_fizz_for_3():
+def test_3_should_return_3():
     assert fizzbuzz(3) == "Fizz"
 
-
-def test_fizzbuzz_should_return_buzz_for_5():
+def test_5_should_return_Buzz():
     assert fizzbuzz(5) == "Buzz"
 
-
-def test_fizzbuzz_should_return_fizzbuzz_for_15():
+def test_15_should_return_FizzBuzz():
     assert fizzbuzz(15) == "FizzBuzz"
 
-
-def test_fizzbuzz_should_return_fizz_for_13():  # contient un 3
-    assert fizzbuzz(13) == "Fizz"
-
-
-def test_fizzbuzz_should_return_buzz_for_52():  # contient un 5
-    assert fizzbuzz(52) == "Buzz"
-
-
-def test_fizzbuzz_should_return_fizzbuzz_for_35():  # contient 3 et 5
-    assert fizzbuzz(35) == "FizzBuzz"
-
-
+def test_fizzbuzz_from_range():
+    assert fizzbuzzfrom_range(1, 15) == "12Fizz4BuzzFizz78FizzBuzz11Fizz1314FizzBuzz"
