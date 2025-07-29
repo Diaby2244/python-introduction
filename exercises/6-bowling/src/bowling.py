@@ -7,4 +7,3 @@ class Game:
 
     def score(self):
         return sum(self.rolls)
-
