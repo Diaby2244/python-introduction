@@ -18,3 +18,11 @@ def test_one_spare():
     for _ in range(17):
         g.roll(0)
     assert g.score() == 13  # 10 + 3
+def test_one_strike():
+    g = Game()
+    g.roll(10)  # strike
+    g.roll(3)
+    g.roll(4)
+    for _ in range(16):
+        g.roll(0)
+    assert g.score() == 17  # 10 + 3 + 4
