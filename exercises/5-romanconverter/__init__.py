@@ -1,4 +1,4 @@
-# Placez ce code dans votre fichier source, par exemple __init__.py ou roman_converter.py
+# roman_converter.py
 
 def int_to_roman(number: int) -> str:
     res = ""
@@ -22,5 +22,25 @@ def int_to_roman(number: int) -> str:
         res += 'I'
         number -= 1
 
+    return res
 
-    return res # Retourne le chiffre romain construit
+
+def roman_to_int(roman: str) -> int:
+    roman_map = {
+        'I': 1,
+        'V': 5,
+        'X': 10,
+    }
+
+    total = 0
+    prev_value = 0
+
+    for char in reversed(roman):
+        value = roman_map[char]
+        if value < prev_value:
+            total -= value
+        else:
+            total += value
+            prev_value = value
+
+    return total
