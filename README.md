@@ -2,12 +2,12 @@
 
 <!-- START_PROGRESS -->
 - 7-marsrover [>                   ] 0% (0/0) - Coverage: 0%
-- 4-fizzbuzz [====================>] 100% (8/8) - Coverage: 69%
+- 4-fizzbuzz [====================>] 100% (6/6) - Coverage: 74%
 - 2-addition [====================>] 100% (1/1) - Coverage: 100%
 - 1-hello [====================>] 100% (1/1) - Coverage: 100%
 - 3-reverse [====================>] 100% (1/1) - Coverage: 100%
 - 6-bowling [>                   ] 0% (0/0) - Coverage: 0%
-- 5-romanconverter [====================>] 100% (1/1) - Coverage: 82%
+- 5-romanconverter [====================>] 100% (1/1) - Coverage: 69%
 <!-- END_PROGRESS -->
 
 ## Instructions pour démarrer le projet
