@@ -1,30 +1,36 @@
 class Game:
-    def __init__(self):
+    def __init__(self, rolls: str = ""):
         self.rolls = []
+        if rolls:
+            self.roll(rolls)
 
-    def roll(self, frame_result: str):
-        for i, char in enumerate(frame_result):
-            if char == 'X':
-                self.rolls.append(10)
-            elif char == '-':
-                self.rolls.append(0)
-            elif char.isdigit():
-                self.rolls.append(int(char))
-            elif char == '/':
-                prev = self.rolls[-1]
-                self.rolls.append(10 - prev)
+    def roll(self, rolls: str):
+        # Supprimer les espaces et stocker les caractères individuellement
+        self.rolls = [char for char in rolls.replace(" ", "")]
 
-    def score(self):
-        score = 0
+    def score(self) -> int:
+        total = 0
         i = 0
+
+        def char_to_value(c):
+            if c == 'X':
+                return 10
+            elif c == '/':
+                return 10 - char_to_value(self.rolls[i - 1])
+            elif c == '-':
+                return 0
+            else:
+                return int(c)
+
         for frame in range(10):
-            if self.rolls[i] == 10:  # strike
-                score += 10 + self.rolls[i + 1] + self.rolls[i + 2]
+            if self.rolls[i] == 'X':
+                total += 10 + char_to_value(self.rolls[i + 1]) + char_to_value(self.rolls[i + 2])
                 i += 1
-            elif self.rolls[i] + self.rolls[i + 1] == 10:  # spare
-                score += 10 + self.rolls[i + 2]
+            elif self.rolls[i + 1] == '/':
+                total += 10 + char_to_value(self.rolls[i + 2])
                 i += 2
             else:
-                score += self.rolls[i] + self.rolls[i + 1]
+                total += char_to_value(self.rolls[i]) + char_to_value(self.rolls[i + 1])
                 i += 2
-        return score
+
+        return total
