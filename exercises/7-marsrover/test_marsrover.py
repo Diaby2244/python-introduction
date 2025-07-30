@@ -35,3 +35,19 @@ class TestRoverInitialization(unittest.TestCase):
 
         rover.execute('➡️')
         self.assertEqual(rover.get_direction(), 'N')
+
+    def test_rover_turns_left(self):
+        dummy_map = Map()
+        rover = Rover(0, 0, 'N', dummy_map)
+
+        rover.execute('⬅️')
+        self.assertEqual(rover.get_direction(), 'W')
+
+        rover.execute('⬅️')
+        self.assertEqual(rover.get_direction(), 'S')
+
+        rover.execute('⬅️')
+        self.assertEqual(rover.get_direction(), 'E')
+
+        rover.execute('⬅️')
+        self.assertEqual(rover.get_direction(), 'N')
