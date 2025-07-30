@@ -1,7 +1,7 @@
 ## Progression des Tests
 
 <!-- START_PROGRESS -->
-- 7-marsrover [>                   ] 0% (0/0) - Coverage: 0%
+- 7-marsrover [====================>] 100% (4/4) - Coverage: 91%
 - 4-fizzbuzz [====================>] 100% (6/6) - Coverage: 74%
 - 2-addition [====================>] 100% (1/1) - Coverage: 100%
 - 1-hello [====================>] 100% (1/1) - Coverage: 100%
