@@ -47,5 +47,13 @@ def test_perfect_game():
     g.roll("XXXXXXXXXXXX")  # 12 strikes
     assert g.score() == 300
 
+def test_all_spares_with_5_bonus():
+    g = Game()
+    g.roll("5/5/5/5/5/5/5/5/5/5/5")  # 10 spares + 5 bonus
+    assert g.score() == 150
 
+def test_mixed_game():
+    g = Game()
+    g.roll("X7/9-X-88/-6XXX81")
+    assert g.score() == 167  # valeur calculée selon les règles officielles
 
