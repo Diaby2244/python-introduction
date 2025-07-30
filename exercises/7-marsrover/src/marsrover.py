@@ -12,7 +12,15 @@ class Rover:
         return self.direction
 
     def execute(self, command: str):
-        if command == '⬆️':
+        if command == '➡️':
+            self.direction = {
+                'N': 'E',
+                'E': 'S',
+                'S': 'W',
+                'W': 'N'
+            }[self.direction]
+
+        elif command == '⬆️':
             if self.direction == 'N':
                 new_x, new_y = self.x, self.y - 1
             elif self.direction == 'S':
@@ -22,7 +30,7 @@ class Rover:
             elif self.direction == 'W':
                 new_x, new_y = self.x - 1, self.y
             else:
-                return
+                return  # direction inconnue
 
             if (
                 0 <= new_x < self.map.width
