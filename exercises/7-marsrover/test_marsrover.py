@@ -51,3 +51,17 @@ class TestRoverInitialization(unittest.TestCase):
 
         rover.execute('⬅️')
         self.assertEqual(rover.get_direction(), 'N')
+
+    def test_rover_does_not_move_into_obstacle(self):
+        map_data = """
+    🟩🟩🟩
+    🟩🌳🟩
+    🟩🟩🟩
+    """
+        map_obj = Map(map_data)
+        rover = Rover(1, 2, 'N', map_obj)  # Position en (1, 2), face nord
+
+        rover.execute('⬆️')  # La case au nord (1,1) est un arbre 🌳, donc obstacle
+
+        # Le rover doit rester à la même position
+        self.assertEqual(rover.get_position(), (1, 2))

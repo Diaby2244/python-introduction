@@ -5,7 +5,6 @@ class Game:
             self.roll(rolls)
 
     def roll(self, rolls: str):
-        # Supprimer les espaces et stocker chaque caractère
         self.rolls = [char for char in rolls.replace(" ", "")]
 
     def score(self) -> int:

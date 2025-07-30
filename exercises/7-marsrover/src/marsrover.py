@@ -58,3 +58,40 @@ class Map:
                 self.grid.append(list(line.strip()))
         self.height = len(self.grid)
         self.width = len(self.grid[0]) if self.grid else 0
+
+    def execute(self, command: str):
+        if command == '➡️':
+            self.direction = {
+                'N': 'E',
+                'E': 'S',
+                'S': 'W',
+                'W': 'N'
+            }[self.direction]
+
+        elif command == '⬅️':
+            self.direction = {
+                'N': 'W',
+                'W': 'S',
+                'S': 'E',
+                'E': 'N'
+            }[self.direction]
+
+        elif command == '⬆️':
+            if self.direction == 'N':
+                new_x, new_y = self.x, self.y - 1
+            elif self.direction == 'S':
+                new_x, new_y = self.x, self.y + 1
+            elif self.direction == 'E':
+                new_x, new_y = self.x + 1, self.y
+            elif self.direction == 'W':
+                new_x, new_y = self.x - 1, self.y
+            else:
+                return
+
+            if (
+                    0 <= new_x < self.map.width
+                    and 0 <= new_y < self.map.height
+                    and self.map.grid[new_y][new_x] != '🌳'
+            ):
+                self.x = new_x
+                self.y = new_y
