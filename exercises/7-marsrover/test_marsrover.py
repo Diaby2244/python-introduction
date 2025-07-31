@@ -103,3 +103,18 @@ class TestRoverInitialization(unittest.TestCase):
 
         rover.execute('⬅️')
         self.assertEqual(rover.get_direction(), 'N')  # retour à la position initiale
+
+    def test_rover_position_and_direction_after_move(self):
+        map_data = """ 
+    🟩🟩🟩
+    🟩🟩🟩
+    🟩🟩🟩
+    """
+        map_obj = Map(map_data)
+        rover = Rover(1, 1, 'S', map_obj)
+
+        rover.execute('⬆️')
+        rover.execute('➡️')
+
+        self.assertEqual(rover.get_position(), (1, 2))
+        self.assertEqual(rover.get_direction(), 'W')
