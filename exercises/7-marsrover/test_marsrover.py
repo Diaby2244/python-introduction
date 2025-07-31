@@ -77,3 +77,14 @@ class TestRoverInitialization(unittest.TestCase):
         rover.execute('⬆️')  # essaie d’avancer vers l’eau
         self.assertEqual(rover.get_position(), (1, 2))  # ne bouge pas
 
+    def test_rover_does_not_exit_map_north(self):
+        map_data = """
+    🟩🟩🟩
+    🟩🟩🟩
+    🟩🟩🟩
+    """
+        map_obj = Map(map_data)
+        rover = Rover(1, 0, 'N', map_obj)  # tout en haut
+        rover.execute('⬆️')  # essaie d’avancer en dehors
+        self.assertEqual(rover.get_position(), (1, 0))  # reste à sa place
+
