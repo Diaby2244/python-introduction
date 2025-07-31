@@ -88,3 +88,18 @@ class TestRoverInitialization(unittest.TestCase):
         rover.execute('⬆️')  # essaie d’avancer en dehors
         self.assertEqual(rover.get_position(), (1, 0))  # reste à sa place
 
+    def test_rover_turns_left_four_times(self):
+        dummy_map = Map()
+        rover = Rover(0, 0, 'N', dummy_map)
+
+        rover.execute('⬅️')
+        self.assertEqual(rover.get_direction(), 'W')
+
+        rover.execute('⬅️')
+        self.assertEqual(rover.get_direction(), 'S')
+
+        rover.execute('⬅️')
+        self.assertEqual(rover.get_direction(), 'E')
+
+        rover.execute('⬅️')
+        self.assertEqual(rover.get_direction(), 'N')  # retour à la position initiale
