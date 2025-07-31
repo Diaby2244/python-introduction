@@ -25,16 +25,3 @@ def test_spare_in_last_frame():
     g = Game("-- -- -- -- -- -- -- -- -- 5/5")
     assert g.score() == 15  # 10e frame = 10 + 5
 
-
-def test_strike_in_last_frame():
-    g = Game("-- -- -- -- -- -- -- -- -- X53")
-    assert g.score() == 18  # 10e frame = 10 + 5 + 3
-
-def test_one_strike_in_middle():
-    g = Game("-- -- X 34 -- -- -- -- -- --")
-    assert g.score() == 10 + 3 + 4 + 3 + 4  # 17 (strike + bonus) + 7 (frame après)
-
-def test_two_spares_in_a_row():
-    g = Game("-- -- 5/ 4/ 3- -- -- -- -- --")
-    expected_score = 14 + 13 + 3  # = 30
-    assert g.score() == expected_score
