@@ -43,7 +43,7 @@ class Rover:
             if (
                 0 <= new_x < self.map.width
                 and 0 <= new_y < self.map.height
-                and self.map.grid[new_y][new_x] != '🌳'
+                and self.map.grid[new_y][new_x] not in ['🌳', '💧']
             ):
                 self.x = new_x
                 self.y = new_y

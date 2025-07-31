@@ -65,3 +65,15 @@ class TestRoverInitialization(unittest.TestCase):
 
         # Le rover doit rester à la même position
         self.assertEqual(rover.get_position(), (1, 2))
+
+    def test_rover_does_not_enter_water(self):
+        map_data = """
+    🟩🟩🟩
+    🟩💧🟩
+    🟩🟩🟩
+    """
+        map_obj = Map(map_data)
+        rover = Rover(1, 2, 'N', map_obj)  # juste sous la case avec 💧
+        rover.execute('⬆️')  # essaie d’avancer vers l’eau
+        self.assertEqual(rover.get_position(), (1, 2))  # ne bouge pas
+
