@@ -1,34 +1,38 @@
 class Game:
     def __init__(self, rolls: str = ""):
-        self.rolls = []
-        if rolls:
-            self.roll(rolls)
+        # Nettoyer la chaîne en supprimant les espaces et convertir en liste de caractères
+        self.rolls = [c for c in rolls.replace(" ", "")]
+        # Convertir les lancers en valeurs numériques (int) en gérant les spares
+        self.values = self._convert_rolls_to_values()
 
-    def roll(self, rolls: str):
-        self.rolls = [char for char in rolls.replace(" ", "")]
-
-    def char_to_value(self, c, prev=None):
-        if c == 'X':
-            return 10
-        elif c == '/':
-            return 10 - self.char_to_value(prev or self.rolls[i - 1])
-        elif c == '-':
-            return 0
-        else:
-            return int(c)
-    def score(self) -> int:
-        total = 0
-        i = 0
-
-        for frame in range(10):
-            if self.rolls[i] == 'X':
-                total += 10 + self.char_to_value(self.rolls[i + 1]) + self.char_to_value(self.rolls[i + 2], self.rolls[i + 1])
-                i += 1
-            elif self.rolls[i + 1] == '/':
-                total += 10 + self.char_to_value(self.rolls[i + 2])
-                i += 2
+    def _convert_rolls_to_values(self):
+        values = []
+        for i, c in enumerate(self.rolls):
+            if c == 'X':  # Strike
+                values.append(10)
+            elif c == '-':  # Raté
+                values.append(0)
+            elif c == '/':  # Spare = 10 moins valeur précédente
+                values.append(10 - values[-1])
             else:
-                total += self.char_to_value(self.rolls[i]) + self.char_to_value(self.rolls[i + 1])
+                values.append(int(c))
+        return values
+
+    def score(self):
+        total = 0
+        i = 0  # index pour parcourir les lancers en valeurs numériques
+
+        # Calcul des 9 premières frames
+        for frame in range(10):
+            value = self.values[i]
+            if value == 10:  # Strike
+                total += 10 + self.values[i + 1] + self.values[i + 2]
+                i += 1
+            elif value + self.values[i + 1] == 10:  # Spare
+                total += 10 + self.values[i + 2]
+                i += 2
+            else:  # Open frame
+                total += value + self.values[i + 1]
                 i += 2
 
         return total
